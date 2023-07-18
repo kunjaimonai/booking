@@ -151,7 +151,10 @@
         if (current_week_day == "Sat") {
           return false;
         }
-
+       var days_closed = [
+            {"day": 25, "month": "Dec"},
+            {"day": 26, "month": "Dec"}
+        ];
         var should_be_closed = days_closed.every(function (value) {
           if (day == value["day"] && month == value["month"]) {
             return false;
