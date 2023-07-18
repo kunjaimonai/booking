@@ -12,7 +12,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
   </head>
   <style>
     * {
@@ -32,7 +31,6 @@
       font-weight: bolder;
     }
     .container {
-      display: none;
       width: 100%;
       height: 80vh;
       text-align: center;
@@ -108,76 +106,5 @@
         ></a>
       </div>
     </div>
-    <script>
-      function isOpen() {
-        var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        var months = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun,",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ];
-
-        var date = new Date();
-
-        var current_week_day = days[date.getDay()];
-
-        var hour = date.getHours();
-        var minute = date.getMinutes();
-        var day = date.getDate();
-        var month = months[date.getMonth()];
-        var year = date.getFullYear();
-
-        var opening_hours = Array();
-        opening_hours["Sun"] = [0000, 0000];
-        opening_hours["Mon"] = [0000, 1800];
-        opening_hours["Tue"] = [0000, 1800];
-        opening_hours["Wed"] = [0000, 1800];
-        opening_hours["Thu"] = [0000, 1800];
-        opening_hours["Fri"] = [0000, 1800];
-        opening_hours["Sat"] = [0000, 0000];
-
-        if (current_week_day == "Sun") {
-          return false;
-        }
-
-        if (current_week_day == "Sat") {
-          return false;
-        }
-       var days_closed = [
-            {"day": 25, "month": "Dec"},
-            {"day": 26, "month": "Dec"}
-        ];
-        var should_be_closed = days_closed.every(function (value) {
-          if (day == value["day"] && month == value["month"]) {
-            return false;
-          }
-
-          return true;
-        });
-
-        if (!should_be_closed) {
-          return false;
-        }
-
-        var today_hours = opening_hours[current_week_day];
-        var current_time = hour.toString() + minute.toString();
-
-        if (today_hours[0] <= current_time && today_hours[1] > current_time) {
-          return true;
-        }
-      }
-      if (isOpen()) {
-        jQuery(".container").show();
-      }
-    </script>
   </body>
 </html>
